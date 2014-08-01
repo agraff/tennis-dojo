@@ -10,8 +10,8 @@ namespace Tennis2
 	{
 		public Tennis()
 		{
-			PlayerOne = new Player();
-			PlayerTwo = new Player();
+			PlayerOne = new Player {Score = "love"};
+			PlayerTwo = new Player {Score = "love"};
 		}
 
 		public Player PlayerOne { get; set; }
@@ -33,7 +33,7 @@ namespace Tennis2
 		{
 			switch (player.Score)
 			{
-				case null:
+				case "love":
 					player.Score = "fifteen";
 					break;
 				case "fifteen":
