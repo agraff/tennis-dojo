@@ -19,21 +19,21 @@ namespace AnyoneForTennis
 		}
 
 		[Test]
-		public void PlayerOneWins()
+		public void Player_1_should_win_if_she_wins_2_sets_6_love()
 		{
 			WinMatch(_scoreBoard, _player1);
 			_scoreBoard.GetWinner().Should().Be(_player1);
 		}
 
 		[Test]
-		public void PlayerTwoWins()
+		public void Player_2_should_win_if_she_wins_2_sets_6_love()
 		{
 			WinMatch(_scoreBoard, _player2);
 			_scoreBoard.GetWinner().Should().Be(_player2);
 		}
 
 		[Test]
-		public void Should_TestName()
+		public void There_should_be_no_winner_after_one_point()
 		{
 			_scoreBoard.AddPoint(_player1);
 
