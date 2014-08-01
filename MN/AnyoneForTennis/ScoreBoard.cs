@@ -21,8 +21,8 @@
 	}
 
 	public enum Player
-    {
-        One = 0,
-        Two = 1
-    }
+	{
+		One = 0,
+		Two = 1
+	}
 }
