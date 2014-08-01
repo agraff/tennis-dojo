@@ -10,8 +10,13 @@ namespace Tennis2
 	{
 		public Tennis()
 		{
-			PlayerOne = new Player {Score = "love"};
-			PlayerTwo = new Player {Score = "love"};
+			PlayerOne = CreateNewPlayer();
+			PlayerTwo = CreateNewPlayer();
+		}
+
+		private static Player CreateNewPlayer()
+		{
+			return new Player { Score = "love" };
 		}
 
 		public Player PlayerOne { get; set; }
@@ -27,6 +32,11 @@ namespace Tennis2
 			{
 				IncreaseScore(PlayerTwo);
 			}
+		}
+
+		public string Score()
+		{
+			return "deuce";
 		}
 
 		private void IncreaseScore(Player player)
