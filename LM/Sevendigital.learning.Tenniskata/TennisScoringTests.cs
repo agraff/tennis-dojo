@@ -19,5 +19,14 @@ namespace Sevendigital.learning.Tenniskata
 			//Then			
 			Assert.That(currentScore,Is.EqualTo("love:love"));
 		}
+
+		[Test]
+		public void when_player_a_wins_a_point_score_fifteen_love()
+		{			
+			var scoreBoard = new ScoreBoard();
+			scoreBoard.PlayerAScores();
+			string currentScore = scoreBoard.Display();
+			Assert.That(currentScore,Is.EqualTo("fifteen:love"));
+		}
     }
 }
