@@ -8,6 +8,7 @@ namespace Sevendigital.learning.Tenniskata
 		[TestCase(0, "love:love")]
 		[TestCase(1, "fifteen:love")]
 		[TestCase(2, "thirty:love")]
+		[TestCase(3, "forty:love")]
 		public void calculates_score_for(int playerOnePoints, string expectedResult)
 		{
 			var scoreBoard = new ScoreBoard();
