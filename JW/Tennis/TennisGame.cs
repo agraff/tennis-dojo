@@ -39,7 +39,7 @@
 				{
 					return "advantage PlayerA";
 				}
-				else
+				else if (ScoresAreEven())
 				{
 					return "deuce";
 				}
@@ -61,6 +61,11 @@
 			}
 
 			return string.Format("{0}-{1}", _scores[_playerA.Score], _scores[_playerB.Score]);
+		}
+
+		private bool ScoresAreEven()
+		{
+			return _playerA.Score - _playerB.Score == 0;
 		}
 
 		private bool PlayerIsOnePointClear(Player firstPlayer, Player secondPlayer)

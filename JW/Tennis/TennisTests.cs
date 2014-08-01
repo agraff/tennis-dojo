@@ -31,6 +31,8 @@ namespace Tennis
 		[TestCase(3, 4, "advantage PlayerB")]
 		[TestCase(4, 4, "deuce")]
 		[TestCase(99, 99, "deuce")]
+		[TestCase(99, 98, "advantage PlayerA")]
+		[TestCase(98, 99, "advantage PlayerB")]
 		public void Score_is_as_expected_when_players_score_n_points(int playerAScore, int playerBScore, string expected)
 		{
 			PlayerAScoresN(playerAScore);
