@@ -34,5 +34,12 @@ namespace Tennis
 			_runningScore = _tennisScorer.RunningScoreFor(3, 2);
 			Assert.That(_runningScore, Is.EqualTo("Forty thirty"));
 		}
+
+		[Test]
+		public void Player_A_wins_if_player_A_scores_at_least_four_points_and_player_B_is_two_points_behind()
+		{
+			_runningScore = _tennisScorer.RunningScoreFor(4, 0);
+			Assert.That(_runningScore, Is.EqualTo("Player A wins! :-)"));
+		}
 	}
 }
