@@ -6,20 +6,38 @@ namespace AnyoneForTennis
 	[TestFixture]
 	public class MatchTests
 	{
+		private Player _player1;
+		private Player _player2;
+		private ScoreBoard _scoreBoard;
+
+		[SetUp]
+		public void Setup()
+		{
+			_player1 = new Player();
+			_player2 = new Player();
+			_scoreBoard = new ScoreBoard(_player1, _player2);
+		}
+
 		[Test]
 		public void PlayerOneWins()
 		{
-			var scoreBoard = new ScoreBoard();
-			WinMatch(scoreBoard, Player.One);
-			scoreBoard.GetWinner().Should().Be(Player.One);
+			WinMatch(_scoreBoard, _player1);
+			_scoreBoard.GetWinner().Should().Be(_player1);
 		}
 
 		[Test]
 		public void PlayerTwoWins()
 		{
-			var scoreBoard = new ScoreBoard();
-			WinMatch(scoreBoard, Player.Two);
-			scoreBoard.GetWinner().Should().Be(Player.Two);
+			WinMatch(_scoreBoard, _player2);
+			_scoreBoard.GetWinner().Should().Be(_player2);
+		}
+
+		[Test]
+		public void Should_TestName()
+		{
+			_scoreBoard.AddPoint(_player1);
+
+			_scoreBoard.GetWinner().Should().BeOfType<NoPlayer>();
 		}
 
 		private static void WinMatch(ScoreBoard scoreBoard, Player player)
@@ -39,7 +57,9 @@ namespace AnyoneForTennis
 		private static void WinGame(ScoreBoard scoreBoard, Player player)
 		{
 			for (var i = 0; i < 4; i++)
+			{
 				scoreBoard.AddPoint(player);
+			}
 		}
 	}
 }
