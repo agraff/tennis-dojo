@@ -36,7 +36,16 @@ namespace Tennis2
 
 		public string Score()
 		{
-			return "deuce";
+			if (BothPlayersScoreForty())
+				return "deuce";
+			if (PlayerOne.Score == "forty")
+				return "game";
+			return PlayerOne.Score + " " + PlayerTwo.Score;
+		}
+
+		private bool BothPlayersScoreForty()
+		{
+			return PlayerOne.Score == "forty" && PlayerTwo.Score == "forty";
 		}
 
 		private void IncreaseScore(Player player)

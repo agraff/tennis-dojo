@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
 namespace Tennis
 {
@@ -16,40 +15,31 @@ namespace Tennis
 		}
 
 		[Test]
-		public void Scores_fifteen_love_if_player_one_scores_one_point_and_player_two_scores_none()
+		public void Scores_fifteen_love_if_player_A_scores_one_point_and_player_B_scores_none()
 		{
 			_runningScore = _tennisScorer.RunningScoreFor(1,0);
 			Assert.That(_runningScore, Is.EqualTo("Fifteen love"));
 		}
 
 		[Test]
-		public void Scores_thirty_fifteen_if_player_one_scores_two_points_and_player_two_scores_one()
+		public void Scores_thirty_fifteen_if_player_A_scores_two_points_and_player_B_scores_one()
 		{
-			_runningScore = _tennisScorer.RunningScoreFor(2, 0);
-			Assert.That(_runningScore, Is.EqualTo("Thirty love"));
+			_runningScore = _tennisScorer.RunningScoreFor(2, 1);
+			Assert.That(_runningScore, Is.EqualTo("Thirty fifteen"));
 		}
 
 		[Test]
-		public void Scores_forty_thirty_if_player_one_scores_three_points_and_player_two_scores_two()
+		public void Scores_forty_thirty_if_player_A_scores_three_points_and_player_B_scores_two()
 		{
-			_runningScore = _tennisScorer.RunningScoreFor(3, 0);
-			Assert.That(_runningScore, Is.EqualTo("Forty love"));
+			_runningScore = _tennisScorer.RunningScoreFor(3, 2);
+			Assert.That(_runningScore, Is.EqualTo("Forty thirty"));
 		}
-	}
 
-	public class TennisScorer
-	{
-		public string RunningScoreFor(int playerOneScore, int playerTwoScore)
+		[Test]
+		public void Player_A_wins_if_player_A_scores_at_least_four_points_and_player_B_is_two_points_behind()
 		{
-			var scoreNames = new Dictionary<int, string>
-				{
-					{ 0, "Love" },
-					{ 1, "Fifteen" },
-					{ 2, "Thirty" },
-					{ 3, "Forty" },
-				};
-
-			return scoreNames[playerOneScore] + " " + scoreNames[playerTwoScore].ToLower();
+			_runningScore = _tennisScorer.RunningScoreFor(4, 0);
+			Assert.That(_runningScore, Is.EqualTo("Player A wins! :-)"));
 		}
 	}
 }

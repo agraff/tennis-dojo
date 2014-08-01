@@ -29,16 +29,53 @@
 				return "deuce";
 			}
 
-			if (_playerA.Score == 4)
+			if (_playerA.Score >= 4)
 			{
-				return "PlayerA Wins";
+				if (PlayerIsTwoPointsClear(_playerA, _playerB))
+				{
+					return "PlayerA Wins";
+				}
+				else if (PlayerIsOnePointClear(_playerA, _playerB))
+				{
+					return "advantage PlayerA";
+				}
+				else if (ScoresAreEven())
+				{
+					return "deuce";
+				}
 			}
-			if (_playerB.Score == 4)
+			if (_playerB.Score >= 4)
 			{
-				return "PlayerB Wins";
+				if (PlayerIsTwoPointsClear(_playerB, _playerA))
+				{
+					return "PlayerB Wins";
+				}
+				else if (PlayerIsOnePointClear(_playerB, _playerA))
+				{
+					return "advantage PlayerB";
+				}
+				else
+				{
+					return "deuce";
+				}
 			}
 
 			return string.Format("{0}-{1}", _scores[_playerA.Score], _scores[_playerB.Score]);
+		}
+
+		private bool ScoresAreEven()
+		{
+			return _playerA.Score - _playerB.Score == 0;
+		}
+
+		private bool PlayerIsOnePointClear(Player firstPlayer, Player secondPlayer)
+		{
+			return firstPlayer.Score - secondPlayer.Score == 1;
+		}
+
+		private bool PlayerIsTwoPointsClear(Player firstPlayer, Player secondPlayer)
+		{
+			return firstPlayer.Score - secondPlayer.Score > 1;
 		}
 	}
 }
