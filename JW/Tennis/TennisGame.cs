@@ -29,7 +29,7 @@
 				return "deuce";
 			}
 
-			if (_playerA.Score == 4)
+			if (_playerA.Score >= 4)
 			{
 				if (PlayerIsTwoPointsClear(_playerA, _playerB))
 				{
@@ -39,8 +39,12 @@
 				{
 					return "advantage PlayerA";
 				}
+				else
+				{
+					return "deuce";
+				}
 			}
-			if (_playerB.Score == 4)
+			if (_playerB.Score >= 4)
 			{
 				if (PlayerIsTwoPointsClear(_playerB, _playerA))
 				{
@@ -49,6 +53,10 @@
 				else if (PlayerIsOnePointClear(_playerB, _playerA))
 				{
 					return "advantage PlayerB";
+				}
+				else
+				{
+					return "deuce";
 				}
 			}
 
