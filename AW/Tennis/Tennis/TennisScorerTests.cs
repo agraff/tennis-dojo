@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
 namespace Tennis
 {
@@ -34,22 +33,6 @@ namespace Tennis
 		{
 			_runningScore = _tennisScorer.RunningScoreFor(3, 0);
 			Assert.That(_runningScore, Is.EqualTo("Forty love"));
-		}
-	}
-
-	public class TennisScorer
-	{
-		public string RunningScoreFor(int playerOneScore, int playerTwoScore)
-		{
-			var scoreNames = new Dictionary<int, string>
-				{
-					{ 0, "Love" },
-					{ 1, "Fifteen" },
-					{ 2, "Thirty" },
-					{ 3, "Forty" },
-				};
-
-			return scoreNames[playerOneScore] + " " + scoreNames[playerTwoScore].ToLower();
 		}
 	}
 }
