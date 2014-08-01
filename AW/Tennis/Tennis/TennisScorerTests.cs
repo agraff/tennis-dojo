@@ -15,21 +15,21 @@ namespace Tennis
 		}
 
 		[Test]
-		public void Scores_fifteen_love_if_player_one_scores_one_point_and_player_two_scores_none()
+		public void Scores_fifteen_love_if_player_A_scores_one_point_and_player_B_scores_none()
 		{
 			_runningScore = _tennisScorer.RunningScoreFor(1,0);
 			Assert.That(_runningScore, Is.EqualTo("Fifteen love"));
 		}
 
 		[Test]
-		public void Scores_thirty_fifteen_if_player_one_scores_two_points_and_player_two_scores_one()
+		public void Scores_thirty_fifteen_if_player_A_scores_two_points_and_player_B_scores_one()
 		{
 			_runningScore = _tennisScorer.RunningScoreFor(2, 0);
 			Assert.That(_runningScore, Is.EqualTo("Thirty love"));
 		}
 
 		[Test]
-		public void Scores_forty_thirty_if_player_one_scores_three_points_and_player_two_scores_two()
+		public void Scores_forty_thirty_if_player_A_scores_three_points_and_player_B_scores_two()
 		{
 			_runningScore = _tennisScorer.RunningScoreFor(3, 0);
 			Assert.That(_runningScore, Is.EqualTo("Forty love"));
