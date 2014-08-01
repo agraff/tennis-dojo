@@ -3,7 +3,6 @@ using NUnit.Framework;
 
 namespace AnyoneForTennis
 {
-
 	[TestFixture]
 	public class MatchTests
 	{
@@ -41,16 +40,6 @@ namespace AnyoneForTennis
 		{
 			for (var i = 0; i < 4; i++)
 				scoreBoard.AddPoint(player);
-		}
-	}
-
-	[TestFixture]
-	public class ScoreBoardTests
-	{
-		[Test]
-		public void TestTheBoard()
-		{
-			1.Should().NotBe(2);
 		}
 	}
 }
