@@ -9,7 +9,7 @@
 			return _currentScore;
 		}
 
-		public void PlayerAScores()
+		public void PlayerOneScores()
 		{
 			if (_currentScore.Equals("fifteen:love"))
 			{
@@ -24,6 +24,11 @@
 			}
 
 			_currentScore = "fifteen:love";
+		}
+
+		public void PlayerTwoScores()
+		{
+			
 		}
 	}
 }
