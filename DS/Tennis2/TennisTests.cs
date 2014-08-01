@@ -13,6 +13,18 @@ namespace Tennis2
 		}
 
 		[Test]
+		public void Player_one_should_start_with_score_love()
+		{
+			Assert.That(_tennis.PlayerTwo.Score, Is.EqualTo("love"));
+		}
+
+		[Test]
+		public void Player_two_should_start_with_score_love()
+		{
+			Assert.That(_tennis.PlayerTwo.Score, Is.EqualTo("love"));
+		}
+
+		[Test]
 		public void Should_increase_player_one_score_to_fifteen_if_they_win_a_point()
 		{
 			_tennis.ScorePoint(winner: 1);
