@@ -16,10 +16,13 @@ namespace Sevendigital.learning.Tenniskata
 
 		public void PlayerAScores()
 		{
-			if (_currentScore.Equals("love:love"))
-				_currentScore = "fifteen:love";
-			else if (_currentScore.Equals("fifteen:love"))
+			if (_currentScore.Equals("fifteen:love"))
+			{
 				_currentScore = "thirty:love";
+				return;
+			}
+
+			_currentScore = "fifteen:love";
 		}
 	}
 }
