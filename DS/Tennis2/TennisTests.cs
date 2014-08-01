@@ -91,5 +91,48 @@ namespace Tennis2
 ;
 			Assert.That(_tennis.Score(), Is.EqualTo("deuce"));
 		}
+
+		[Test]
+		public void Should_set_score_to_fifteen_fifteen_if_each_player_scores_one_point()
+		{
+			_tennis.ScorePoint(1);
+			_tennis.ScorePoint(2);
+
+			Assert.That(_tennis.Score(), Is.EqualTo("fifteen fifteen"));
+		}
+
+		[Test]
+		public void Should_set_score_to_thirty_fifteen_if_player_one_scores_two_points_and_player_two_scores_one_point()
+		{
+			_tennis.ScorePoint(1);
+			_tennis.ScorePoint(1);
+			_tennis.ScorePoint(2);
+
+			Assert.That(_tennis.Score(), Is.EqualTo("thirty fifteen"));
+		}
+
+		[Test]
+		public void Score_is_game_if_player_one_scores_four_and_player_two_scores_at_least_two_points_less()
+		{
+			_tennis.ScorePoint(1);
+			_tennis.ScorePoint(1);
+			_tennis.ScorePoint(1);
+			_tennis.ScorePoint(1);
+
+			Assert.That(_tennis.Score(), Is.EqualTo("game"));
+		}
+
+		[Test, Ignore("Work in progress.")]
+		public void Score_is_forty_thirty_if_player_one_scores_four_and_player_two_scores_three()
+		{
+			_tennis.ScorePoint(1);
+			_tennis.ScorePoint(1);
+			_tennis.ScorePoint(1);
+
+			_tennis.ScorePoint(2);
+			_tennis.ScorePoint(2);
+
+			Assert.That(_tennis.Score(), Is.EqualTo("forty thirty"));
+		}
 	}
 }
