@@ -13,6 +13,18 @@ namespace Tennis2
 		}
 
 		[Test]
+		public void Player_one_should_start_with_score_love()
+		{
+			Assert.That(_tennis.PlayerTwo.Score, Is.EqualTo("love"));
+		}
+
+		[Test]
+		public void Player_two_should_start_with_score_love()
+		{
+			Assert.That(_tennis.PlayerTwo.Score, Is.EqualTo("love"));
+		}
+
+		[Test]
 		public void Should_increase_player_one_score_to_fifteen_if_they_win_a_point()
 		{
 			_tennis.ScorePoint(winner: 1);
@@ -47,7 +59,7 @@ namespace Tennis2
 		}
 
 		[Test]
-		public void Should_increase_player_one_score_to_forty_if_they_win_2_points()
+		public void Should_increase_player_one_score_to_forty_if_they_win_3_points()
 		{
 			_tennis.ScorePoint(1);
 			_tennis.ScorePoint(1);
@@ -57,13 +69,27 @@ namespace Tennis2
 		}
 
 		[Test]
-		public void Should_increase_player_two_score_to_forty_if_they_win_2_points()
+		public void Should_increase_player_two_score_to_forty_if_they_win_3_points()
 		{
 			_tennis.ScorePoint(2);
 			_tennis.ScorePoint(2);
 			_tennis.ScorePoint(2);
 
 			Assert.That(_tennis.PlayerTwo.Score, Is.EqualTo("forty"));
+		}
+
+		[Test]
+		public void Should_set_both_players_scores_to_deuce_if_both_players_reach_3_points()
+		{
+			_tennis.ScorePoint(2);
+			_tennis.ScorePoint(2);
+			_tennis.ScorePoint(2);
+
+			_tennis.ScorePoint(1);
+			_tennis.ScorePoint(1);
+			_tennis.ScorePoint(1);
+;
+			Assert.That(_tennis.Score(), Is.EqualTo("deuce"));
 		}
 	}
 }

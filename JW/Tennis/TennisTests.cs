@@ -5,11 +5,15 @@ namespace Tennis
 	public class TennisTests
 	{
 		private TennisGame _tennisGame;
+		private Player _playerA;
+		private Player _playerB;
 
 		[SetUp]
 		public void Before_each()
 		{
-			_tennisGame = new TennisGame();
+			_playerA = new Player();
+			_playerB = new Player();
+			_tennisGame = new TennisGame(_playerA, _playerB);
 		}
 
 		[TestCase(0, 0, "love-love")]
@@ -35,7 +39,7 @@ namespace Tennis
 		{
 			for (int i = 0; i < times; i++)
 			{
-				_tennisGame.PlayerAPoint();
+				_playerA.ScorePoint();
 			}
 		}
 
@@ -43,7 +47,7 @@ namespace Tennis
 		{
 			for (int i = 0; i < times; i++)
 			{
-				_tennisGame.PlayerBPoint();
+				_playerB.ScorePoint();
 			}
 		}
 	}
