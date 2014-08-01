@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
 namespace Sevendigital.learning.Tenniskata
 {
@@ -15,7 +11,7 @@ namespace Sevendigital.learning.Tenniskata
 			//Given
 			var scoreBoard = new ScoreBoard();
 			//When
-			string currentScore = scoreBoard.Display();
+			var currentScore = scoreBoard.Display();
 			//Then			
 			Assert.That(currentScore,Is.EqualTo("love:love"));
 		}
@@ -25,8 +21,18 @@ namespace Sevendigital.learning.Tenniskata
 		{			
 			var scoreBoard = new ScoreBoard();
 			scoreBoard.PlayerAScores();
-			string currentScore = scoreBoard.Display();
+			var currentScore = scoreBoard.Display();
 			Assert.That(currentScore,Is.EqualTo("fifteen:love"));
+		}
+		
+		[Test]
+		public void when_player_a_wins_two_points_score_thirty_love()
+		{			
+			var scoreBoard = new ScoreBoard();
+			scoreBoard.PlayerAScores();
+			scoreBoard.PlayerAScores();
+			var currentScore = scoreBoard.Display();
+			Assert.That(currentScore,Is.EqualTo("thirty:love"));
 		}
     }
 }
