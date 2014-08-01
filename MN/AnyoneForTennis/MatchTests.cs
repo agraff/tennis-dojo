@@ -35,7 +35,15 @@ namespace AnyoneForTennis
 		[Test]
 		public void There_should_be_no_winner_after_one_point()
 		{
-			_scoreBoard.AddPoint(_player1);
+			_scoreBoard.AddGame(_player1);
+
+			_scoreBoard.GetWinner().Should().BeOfType<NoPlayer>();
+		}
+		
+		[Test]
+		public void There_should_be_no_winner_after_one_set()
+		{
+			WinSet(_scoreBoard, _player1);
 
 			_scoreBoard.GetWinner().Should().BeOfType<NoPlayer>();
 		}
@@ -58,7 +66,7 @@ namespace AnyoneForTennis
 		{
 			for (var i = 0; i < 4; i++)
 			{
-				scoreBoard.AddPoint(player);
+				scoreBoard.AddGame(player);
 			}
 		}
 	}

@@ -13,7 +13,7 @@
 
 		public Player GetWinner()
 		{
-			if (_player1.Points > 1)
+			if (_player1.Points > 24)
 			{
 				return _player1;
 			}
@@ -26,7 +26,7 @@
 			return new NoPlayer();
 		}
 
-		public void AddPoint(Player player)
+		public void AddGame(Player player)
 		{
 			player.AddPoint();
 		}
