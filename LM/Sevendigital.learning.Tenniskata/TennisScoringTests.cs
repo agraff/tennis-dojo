@@ -1,32 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
 namespace Sevendigital.learning.Tenniskata
 {
 	[TestFixture]
     public class TennisScoringTests
     {
-		[Test]
-		public void first_score_love_all()
+		[TestCase(0, 0, "love:love")]
+		[TestCase(1, 0, "fifteen:love")]
+		[TestCase(1, 1, "fifteen:fifteen")]
+		[TestCase(2, 0, "thirty:love")]
+		[TestCase(3, 0, "forty:love")]
+		public void calculates_score_for(int playerOnePoints, int playerTwoPoints, string expectedResult)
 		{
-			//Given
 			var scoreBoard = new ScoreBoard();
-			//When
-			string currentScore = scoreBoard.Display();
-			//Then			
-			Assert.That(currentScore,Is.EqualTo("love:love"));
-		}
+			for(var i = 0; i < playerOnePoints; i++)
+				scoreBoard.PlayerOneScores();
+			
+			for(var i = 0; i < playerTwoPoints; i++)
+				scoreBoard.PlayerTwoScores();
 
-		[Test]
-		public void when_player_a_wins_a_point_score_fifteen_love()
-		{			
-			var scoreBoard = new ScoreBoard();
-			scoreBoard.PlayerAScores();
-			string currentScore = scoreBoard.Display();
-			Assert.That(currentScore,Is.EqualTo("fifteen:love"));
+			var currentScore = scoreBoard.Display();
+
+			Assert.That(currentScore, Is.EqualTo(expectedResult));
 		}
     }
 }

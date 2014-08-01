@@ -1,28 +1,47 @@
 ﻿namespace AnyoneForTennis
 {
-	public class ScoreBoard 
+	public class ScoreBoard
 	{
-		private readonly int[] _points = new int[2];
+		private readonly Player _player1;
+		private readonly Player _player2;
+
+		public ScoreBoard(Player player1, Player player2)
+		{
+			_player1 = player1;
+			_player2 = player2;
+		}
 
 		public Player GetWinner()
 		{
-			if (_points[(int) Player.One] > 0)
+			if (_player1.Points > 1)
 			{
-				return Player.One;
+				return _player1;
 			}
 
-			return Player.Two;
+			if (_player2.Points > 1)
+			{
+				return _player2;
+			}
+
+			return new NoPlayer();
 		}
 
 		public void AddPoint(Player player)
 		{
-			_points[(int)player] ++;
+			player.AddPoint();
 		}
 	}
 
-	public enum Player
-    {
-        One = 0,
-        Two = 1
-    }
+	public class Player
+	{
+		public int Points { get; private set; }
+		public void AddPoint()
+		{
+			Points++;
+		}
+	}
+
+	public class NoPlayer : Player
+	{
+	}
 }
